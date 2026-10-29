@@ -1,0 +1,16 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Planète principale -->
+  <circle cx="32" cy="32" r="20" fill="white"/>
+
+  <!-- Anneau -->
+  <ellipse
+    cx="32"
+    cy="32"
+    rx="32"
+    ry="10"
+    fill="none"
+    stroke="white"
+    stroke-width="3"
+    transform="rotate(-15 32 32)"
+  />
+</svg>

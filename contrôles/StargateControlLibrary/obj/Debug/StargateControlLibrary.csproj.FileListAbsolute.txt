@@ -1,0 +1,56 @@
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.csproj.AssemblyReference.cache
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.MissionViewer.resources
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.MissionCard.resources
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.TrombiPerso.resources
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.csproj.GenerateResource.cache
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\StargateControlLibrary.dll
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\StargateControlLibrary.pdb
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.Alien.resources
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.Planet.resources
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.PlanetInfo.resources
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.Properties.Resources.resources
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.csproj.CoreCompileInputs.cache
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.dll
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.pdb
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\ExCSS.dll
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\Svg.dll
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Buffers.dll
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Memory.dll
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\Svg.xml
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Buffers.xml
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Memory.xml
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.NavItem.resources
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\Stargate.F7537A32.Up2Date
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.Bar.resources
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\StargateControlLibrary.dll
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\StargateControlLibrary.pdb
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\ExCSS.dll
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\Svg.dll
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Buffers.dll
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Memory.dll
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\Svg.xml
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Buffers.xml
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Memory.xml
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.csproj.AssemblyReference.cache
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.Alien.resources
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.Bar.resources
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.MissionViewer.resources
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.NavItem.resources
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.Planet.resources
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.PlanetInfo.resources
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.MissionCard.resources
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.TrombiPerso.resources
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.Properties.Resources.resources
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.csproj.GenerateResource.cache
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.csproj.CoreCompileInputs.cache
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\Stargate.F7537A32.Up2Date
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.dll
+C:\Users\pigod\Documents\sae a21\sae\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.pdb

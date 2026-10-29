@@ -1,0 +1,5 @@
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.csproj.AssemblyReference.cache
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.MissionViewer.resources
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.MissionCard.resources
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.TrombiPerso.resources
+C:\Users\emile\stargate\contrôles\StargateControlLibrary\obj\Debug\StargateControlLibrary.csproj.GenerateResource.cache

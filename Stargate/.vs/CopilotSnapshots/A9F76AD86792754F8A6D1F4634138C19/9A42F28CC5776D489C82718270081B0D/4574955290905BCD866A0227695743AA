@@ -1,0 +1,297 @@
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data.SQLite;
+using StargateControlLibrary;
+
+namespace Stargate
+{
+    public partial class Volet1 : Form
+    {
+        // Connexion à la base de données Stargate.db
+        private readonly SQLiteConnection conn = new SQLiteConnection("Data Source=Stargate.db;Version=3;");
+
+        // Filtre actuellement actif sur les missions
+        private string filtreActif = "Toutes";
+
+        // Bouton de filtre actuellement sélectionné (pour l'effet actif)
+        private Button boutonFiltreActif;
+
+        public Volet1()
+        {
+            InitializeComponent();
+        }
+
+        private void Volet1_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+
+            // ── Sidebar : création des éléments de navigation ──────────────────────
+            AjouterNavItems();
+
+            // ── Tableau de bord : chargement initial des missions ─────────────────
+            MissionLoad("Toutes");
+
+            // Activer le bouton "Toutes" par défaut
+            AppliquerStyleFiltreActif(btnFiltreToutes);
+        }
+
+        // ══════════════════════════════════════════════════════════════════════════
+        // SIDEBAR — création des NavItems
+        // ══════════════════════════════════════════════════════════════════════════
+
+        private void AjouterNavItems()
+        {
+            int yBase = 122;
+            int hauteurItem = 66;
+            int espacement = 10;
+
+            NavItem navTableau = new NavItem("Tableau de bord", "loupe.svg", Color.FromArgb(255, 200, 50), Color.White, tableauDeBord_Click);
+            navTableau.Location = new Point(10, yBase);
+            pnlSidebar.Controls.Add(navTableau);
+
+            NavItem navMission = new NavItem("Nouvelle mission", "mission.svg", Color.FromArgb(255, 200, 50), Color.White, newMission_Click);
+            navMission.Location = new Point(10, yBase + (hauteurItem + espacement));
+            pnlSidebar.Controls.Add(navMission);
+
+            NavItem navRaces = new NavItem("Découverte des races", "alien.svg", Color.FromArgb(255, 200, 50), Color.White, races_Click);
+            navRaces.Location = new Point(10, yBase + (hauteurItem + espacement) * 2);
+            pnlSidebar.Controls.Add(navRaces);
+
+            NavItem navPlanetes = new NavItem("Info planètes", "planet.svg", Color.FromArgb(255, 200, 50), Color.White, planetes_Click);
+            navPlanetes.Location = new Point(10, yBase + (hauteurItem + espacement) * 3);
+            pnlSidebar.Controls.Add(navPlanetes);
+
+            NavItem navStats = new NavItem("Statistiques", "stats.svg", Color.FromArgb(255, 200, 50), Color.White, stats_Click);
+            navStats.Location = new Point(10, yBase + (hauteurItem + espacement) * 4);
+            pnlSidebar.Controls.Add(navStats);
+        }
+
+        // ══════════════════════════════════════════════════════════════════════════
+        // NAVIGATION — ouverture des autres volets
+        // ══════════════════════════════════════════════════════════════════════════
+
+        private void tableauDeBord_Click(object sender, EventArgs e)
+        {
+            // Recharger le tableau de bord avec le filtre actif
+            MissionLoad(filtreActif);
+        }
+
+        private void newMission_Click(object sender, EventArgs e)
+        {
+            // Volet 2 : création de mission, protégée par authentification
+            FormLogin login = new FormLogin();
+            if (login.ShowDialog(this) != DialogResult.OK || !login.Authentifie)
+                return;
+
+            this.Hide();
+            Form2 v2 = new Form2();
+            v2.ShowDialog();
+
+            GererNavigationRetour();
+        }
+
+        private void races_Click(object sender, EventArgs e)
+        {
+            // Volet 5 : découverte des espèces
+            this.Hide();
+            volet5 v5 = new volet5();
+            v5.ShowDialog();
+
+            GererNavigationRetour();
+        }
+
+        private void planetes_Click(object sender, EventArgs e)
+        {
+            // Volet 6 : informations sur les planètes
+            this.Hide();
+            volet6 v6 = new volet6();
+            v6.ShowDialog();
+
+            GererNavigationRetour();
+        }
+
+        private void stats_Click(object sender, EventArgs e)
+        {
+            // Volet 7 : données statistiques
+            this.Hide();
+            Form7 v7 = new Form7();
+            v7.ShowDialog();
+
+            GererNavigationRetour();
+        }
+
+        /// <summary>
+        /// Après le retour d'un volet, vérifie si une navigation vers un autre volet a été demandée.
+        /// Sinon, réaffiche le tableau de bord.
+        /// </summary>
+        private void GererNavigationRetour()
+        {
+            string destination = NavHelper.ProchainVolet;
+            NavHelper.ProchainVolet = null;
+
+            if (destination != null)
+            {
+                NavigerVers(destination);
+            }
+            else
+            {
+                this.Show();
+                MissionLoad(filtreActif); // Rafraîchir au retour
+            }
+        }
+
+        private void NavigerVers(string destination)
+        {
+            switch (destination)
+            {
+                case "volet2": newMission_Click(null, EventArgs.Empty); break;
+                case "volet5": races_Click(null, EventArgs.Empty);      break;
+                case "volet6": planetes_Click(null, EventArgs.Empty);   break;
+                case "volet7": stats_Click(null, EventArgs.Empty);      break;
+                default: this.Show(); break;
+            }
+        }
+
+        // ══════════════════════════════════════════════════════════════════════════
+        // TABLEAU DE BORD — chargement et filtrage des missions
+        // ══════════════════════════════════════════════════════════════════════════
+
+        /// <summary>
+        /// Charge et affiche les cartes de missions selon le filtre sélectionné.
+        /// Affiche une fenêtre de chargement pendant l'opération.
+        /// </summary>
+        private void MissionLoad(string filtre = "Toutes")
+        {
+            filtreActif = filtre;
+
+            FormChargement chargement = new FormChargement("⏳  Chargement des missions...");
+            chargement.Show(this);
+            Application.DoEvents(); // Forcer le rendu de la fenêtre de chargement
+
+            try
+            {
+                conn.Open();
+
+                // Construction de la clause WHERE selon le filtre
+                string today = DateTime.Today.ToString("yyyy-MM-dd");
+                string whereSQL = "";
+                if (filtre == "En cours")
+                    whereSQL = $" WHERE dateDepart <= '{today}' AND dateRetour >= '{today}'";
+                else if (filtre == "À venir")
+                    whereSQL = $" WHERE dateDepart > '{today}'";
+                else if (filtre == "Terminé")
+                    whereSQL = $" WHERE dateRetour < '{today}'";
+
+                string query = "SELECT * FROM Mission" + whereSQL;
+                SQLiteCommand cmd = new SQLiteCommand(query, conn);
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                flpVolet1.Controls.Clear();
+                int tag = 0;
+
+                while (reader.Read())
+                {
+                    string nomPlanete  = reader["nomPlanete"].ToString();
+                    string numero      = reader["numero"].ToString();
+                    string missionName = nomPlanete + " - " + numero;
+                    string dateDeb     = reader["dateDepart"].ToString();
+                    string dateFin     = reader["dateRetour"].ToString();
+                    string nomChef     = reader["matriculeChef"].ToString();
+                    string budget      = reader["budget"].ToString() + " dollars galactiques";
+
+                    // Résolution du matricule en nom complet
+                    using (var cmd2 = new SQLiteCommand(
+                        $"SELECT nom FROM Membre WHERE matricule = '{nomChef}'", conn))
+                        nomChef = cmd2.ExecuteScalar()?.ToString() ?? "Inconnu";
+
+                    MissionViewer carte = new MissionViewer("images.png", missionName, dateDeb, dateFin, nomChef, budget);
+                    carte.afficheur = OuvrirMission;
+                    carte.Tag = tag;
+                    flpVolet1.Controls.Add(carte);
+                    tag++;
+                }
+
+                reader.Close();
+                cmd.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors du chargement des missions : " + ex.Message,
+                    "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+                chargement.Close();
+                chargement.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Ouvre le récapitulatif d'une mission (Form3) suite au clic sur une carte.
+        /// </summary>
+        private void OuvrirMission(object sender, EventArgs e)
+        {
+            if (!(sender is Button btn)) return;
+            if (!(btn.Parent is MissionViewer carte)) return;
+
+            string[] parts = carte.get_NomMission().Split('-');
+            if (parts.Length < 2) return;
+
+            string planete = parts[0].Trim();
+            if (!int.TryParse(parts[1].Trim(), out int numero)) return;
+
+            this.Hide();
+            Form3 v3 = new Form3(planete, numero);
+            v3.ShowDialog();
+
+            GererNavigationRetour();
+        }
+
+        // ══════════════════════════════════════════════════════════════════════════
+        // FILTRES — boutons de tri des missions
+        // ══════════════════════════════════════════════════════════════════════════
+
+        private void btnFiltreToutes_Click(object sender, EventArgs e)
+        {
+            AppliquerStyleFiltreActif(btnFiltreToutes);
+            MissionLoad("Toutes");
+        }
+
+        private void btnFiltreEnCours_Click(object sender, EventArgs e)
+        {
+            AppliquerStyleFiltreActif(btnFiltreEnCours);
+            MissionLoad("En cours");
+        }
+
+        private void btnFiltreAVenir_Click(object sender, EventArgs e)
+        {
+            AppliquerStyleFiltreActif(btnFiltreAVenir);
+            MissionLoad("À venir");
+        }
+
+        private void btnFiltreTermine_Click(object sender, EventArgs e)
+        {
+            AppliquerStyleFiltreActif(btnFiltreTermine);
+            MissionLoad("Terminé");
+        }
+
+        /// <summary>
+        /// Met en évidence le bouton de filtre sélectionné et réinitialise les autres.
+        /// </summary>
+        private void AppliquerStyleFiltreActif(Button btnActif)
+        {
+            // Réinitialiser tous les boutons
+            foreach (Button btn in new[] { btnFiltreToutes, btnFiltreEnCours, btnFiltreAVenir, btnFiltreTermine })
+            {
+                btn.FlatAppearance.BorderSize = 0;
+            }
+
+            // Mettre en évidence le bouton actif avec une bordure
+            btnActif.FlatAppearance.BorderSize = 2;
+            btnActif.FlatAppearance.BorderColor = Color.FromArgb(230, 235, 255);
+            boutonFiltreActif = btnActif;
+        }
+    }
+}
